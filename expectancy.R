@@ -5,6 +5,8 @@ library(dplyr)
 
 df <- read.csv("~/R/10 life expectancy/lifeexpectancy.csv", stringsAsFactors = F)
 
+#prepair data for plot and annotations------------------------------------------
+
 df = df %>% 
   select(-total) %>% 
   gather(sex, expectancy, -age)
@@ -25,6 +27,8 @@ annotation = data.frame(x = 17.5,
 legend = data.frame(x = 17.5, y = c(68.5, 78.5), 
                     sex = c('male', 'female'), 
                     label = c('чоловіки', 'жінки'))
+
+#visualize----------------------------------------------------------------------
 
 png(filename = 'expectancy.png', width = 1200, height = 1000)
 ggplot(df)+
